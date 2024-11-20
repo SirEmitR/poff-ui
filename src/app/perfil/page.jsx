@@ -9,7 +9,6 @@ import AntonFont from "@/components/fonts/anton";
 import ButtonForm from "@/components/form/button";
 import ImageInput from "@/components/form/image-input";
 import InputForm from "@/components/form/input";
-import { PencilSquareIcon, XmarkIcon } from "@/components/icons";
 import ProtectedRoute from "@/components/layout/protected-route"
 import Credencial from "@/components/usuario/credencial"
 import request from "@/utils/request";
@@ -41,9 +40,7 @@ const Perfil = () => {
     if(!usuario) return;
     const field = e.target.name;
     const formData = new FormData(e.target);
-    const data = formData.get(field) || null;
-    console.log(data, 'data')
-    console.log(field, 'field')
+    const data = formData.get(field) || null; 
     showSender();
     request(`/usuarios/${usuario.id}?field=${field}`, 'PUT', {data})
     .then(response => {
@@ -71,14 +68,29 @@ const Perfil = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', imageRef.current);
+    if(!usuario) return;
+    showSender();
     request(`/usuarios/${usuario.id}/foto`, 'PUT', formData, true)
     .then(response => {
-      console.log(response, 'response')
+      console.log(response)
+      if(response?.error){
+        addNotification(response.error, 'error');
+        return
+      }
+      if(response.status !== 'Ok'){
+        addNotification(response.message, 'warning');
+        return
+      }
+      addNotification(response.message, 'success');
+      console.log(response.data.url)
+      editUsuario('foto', response.data.url);
     }).catch(error => {
-      console.log(error, 'error')
+      addNotification(error.message, 'error');
+    }).finally(() => {
+      hideSender();
+      toggleOpenFoto();
     })
   }
-
   return (
     <ProtectedRoute route="/perfil">
       <section className="grid grid-cols-1 gap-4">
@@ -104,7 +116,7 @@ const Perfil = () => {
             {
               !usuario?.vinculado ? <Messages type='warning'>
               No se puede generar tu credencial <AntonFont>POFF</AntonFont>, necesitas vincular tu cuenta a un <AntonFont>MIEMBRO POFF</AntonFont> (en caso de exixstir) actualizando tu CURP.
-              </Messages> : <Credencial nombre={usuario?.nombre} foto={'/public/images/AFFAJ.png'} />
+              </Messages> : <Credencial nombre={usuario?.nombre} foto={usuario?.foto || null} />
             }
           </div>
           <h2 className="text-lg font-semibold">Datos personales</h2>
