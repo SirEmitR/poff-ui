@@ -5,7 +5,6 @@ import splitName from '@/utils/split-name'
 import Square from './square'
 
 const TeamHero = ({nombre, tipoFondo, fondo, logo}) => {
-  console.log(tipoFondo, typeof(logo))
   return (
     <header>
         <Square cols={2} rows={1}>
