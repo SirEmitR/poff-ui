@@ -11,7 +11,8 @@ const ImageInput = forwardRef(({
   onChange,
   error,
   disabled,
-  required
+  required,
+  withButton = true
 }, ref) => {
   const [preview, setPreview] = useState(null);
 
@@ -20,7 +21,12 @@ const ImageInput = forwardRef(({
     const reader = new FileReader();
     reader.onload = () => {
       setPreview(reader.result);
-      if(ref) ref.current = file;
+      if(ref) {
+        ref.current = {
+          file,
+          preview: reader.result
+        }
+      }
     };
     reader.readAsDataURL(file);
   };
@@ -34,7 +40,9 @@ const ImageInput = forwardRef(({
       </div>
       <span className='col-span-2 text-secondary text-xs'>Vista previa en tamaño 208x208px</span>
       <label className="px-4 py-2 text-center cursor-pointer rounded bg-info text-white" htmlFor={id}>{label}</label>
-      <ButtonForm>Guardar</ButtonForm>
+      {
+        withButton && <ButtonForm>Guardar</ButtonForm>
+      }
       <input
         hidden
         type="file"

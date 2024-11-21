@@ -32,11 +32,11 @@ body {
   @apply px-10 py-6 sm:px-20;
 }
 
-.input-container{
+.input-container {
   position: relative;
   min-width: 300px;
   width: 100%;
-  label{
+  label {
     position: absolute;
     bottom: 10px;
     left: 10px;
@@ -45,12 +45,12 @@ body {
     transition: all 0.3s;
   }
 
-  textarea + label{
+  textarea + label {
     bottom: inherit;
     top: 30px;
   }
 
-  input{
+  input {
     width: 100%;
     padding: 10px;
     padding-bottom: 6px;
@@ -65,11 +65,12 @@ body {
     appearance: none;
   }
 
-  input::placeholder{
+  input::placeholder {
     visibility: hidden;
   }
 
-  input:focus + label, input:not(:placeholder-shown) + label{
+  input:focus + label,
+  input:not(:placeholder-shown) + label {
     transform: translateY(-30px);
     font-size: 12px;
   }
@@ -84,7 +85,7 @@ body {
     border-color: var(--error);
   }
 
-  textarea{
+  textarea {
     width: 100%;
     padding: 10px;
     border: none;
@@ -96,22 +97,28 @@ body {
     outline: none;
     margin-top: 20px;
     height: 100%;
-  
-    &:focus + label, &:valid + label{
+
+    &:focus + label,
+    &:valid + label {
       transform: translateY(-30px);
       font-size: 12px;
     }
   }
 }
 
-.bar-loader{
+.bar-loader {
   background: transparent;
-  background: linear-gradient(90deg, transparent 0%, transparent 35%, var(--primary) 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 35%,
+    var(--primary) 100%
+  );
   background-size: 200% 100%;
   background-position: 100%;
   animation: skeleton 2s ease-in-out infinite;
 }
-.skeleton{
+.skeleton {
   background: linear-gradient(
     120deg,
     #f2f1f1 30%,
@@ -122,9 +129,9 @@ body {
   background-size: 200% 100%;
   background-position: 100%;
   animation: skeleton 2s ease-in-out infinite;
- }
-@keyframes skeleton{
-  100%{
+}
+@keyframes skeleton {
+  100% {
     background-position: -100% 0;
   }
 }
@@ -166,101 +173,100 @@ body {
 
 @keyframes slideIn {
   from {
-      opacity: 0;
-      transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.modal{
+.modal {
   display: none;
 
-  &.open{
+  &.open {
     display: block;
     visibility: visible;
     opacity: 1;
   }
 }
-.left{
+.left {
   @apply left-0 top-0 bottom-0;
-  .content{
+  .content {
     animation: left-apear 800ms;
-
   }
-  &.open{
-    .external{
+  &.open {
+    .external {
       animation: apear 800ms;
       background-color: #38383847;
     }
   }
-  &.close{
-    .content{
+  &.close {
+    .content {
       animation: left-close 800ms;
     }
-    .external{
+    .external {
       animation: disapear 800ms;
     }
   }
 }
-.bottom{
+.bottom {
   @apply bottom-0 left-0 right-0;
-  .content{
+  .content {
     animation: bottom-apear 800ms;
   }
-  &.open{
-    .external{
+  &.open {
+    .external {
       animation: apear 800ms;
       background-color: #38383847;
     }
   }
-  &.close{
-    .content{
+  &.close {
+    .content {
       animation: bottom-close 800ms;
     }
-    .external{
+    .external {
       animation: disapear 800ms;
     }
   }
 }
-.center{
+.center {
   @apply left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-md;
-  .content{
+  .content {
     animation: apear 800ms;
   }
-  &.open{
-    .external{
+  &.open {
+    .external {
       animation: apear 800ms;
       background-color: #38383847;
     }
   }
-  &.close{
-    .content{
+  &.close {
+    .content {
       animation: disapear 800ms;
     }
-    .external{
+    .external {
       animation: disapear 800ms;
     }
   }
 }
-.right{
+.right {
   @apply right-0 top-0 bottom-0;
-  .content{
+  .content {
     animation: right-apear 800ms;
   }
-  &.open{
-    .external{
+  &.open {
+    .external {
       animation: apear 800ms;
       background-color: #38383847;
     }
   }
-  &.close{
-    .content{
+  &.close {
+    .content {
       animation: right-close 800ms;
     }
-    .external{
+    .external {
       animation: disapear 800ms;
     }
   }
@@ -275,14 +281,13 @@ body {
   }
 }
 
-@keyframes disapear{
+@keyframes disapear {
   0% {
     opacity: 1;
   }
   100% {
     opacity: 0;
   }
-
 }
 
 @keyframes left-apear {
@@ -408,219 +413,357 @@ body {
 .loader {
   width: 55px;
   aspect-ratio: 1;
-  --g1:conic-gradient(from  90deg at top    3px left  3px,#0000 90deg,var(--secondary) 0);
-  --g2:conic-gradient(from -90deg at bottom 3px right 3px,#0000 90deg,var(--secondary) 0);
-  background:
-    var(--g1),var(--g1),var(--g1),var(--g1), 
-    var(--g2),var(--g2),var(--g2),var(--g2);
-  background-position: 0 0,100% 0,100% 100%,0 100%;
+  --g1: conic-gradient(
+    from 90deg at top 3px left 3px,
+    #0000 90deg,
+    var(--secondary) 0
+  );
+  --g2: conic-gradient(
+    from -90deg at bottom 3px right 3px,
+    #0000 90deg,
+    var(--secondary) 0
+  );
+  background: var(--g1), var(--g1), var(--g1), var(--g1), var(--g2), var(--g2),
+    var(--g2), var(--g2);
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
   background-size: 25px 25px;
   background-repeat: no-repeat;
   animation: l11 1.5s infinite;
 }
 @keyframes l11 {
-  0%   {background-size:35px 15px,15px 15px,15px 35px,35px 35px}
-  25%  {background-size:35px 35px,15px 35px,15px 15px,35px 15px}
-  50%  {background-size:15px 35px,35px 35px,35px 15px,15px 15px}
-  75%  {background-size:15px 15px,35px 15px,35px 35px,15px 35px}
-  100% {background-size:35px 15px,15px 15px,15px 35px,35px 35px}
+  0% {
+    background-size: 35px 15px, 15px 15px, 15px 35px, 35px 35px;
+  }
+  25% {
+    background-size: 35px 35px, 15px 35px, 15px 15px, 35px 15px;
+  }
+  50% {
+    background-size: 15px 35px, 35px 35px, 35px 15px, 15px 15px;
+  }
+  75% {
+    background-size: 15px 15px, 35px 15px, 35px 35px, 15px 35px;
+  }
+  100% {
+    background-size: 35px 15px, 15px 15px, 15px 35px, 35px 35px;
+  }
 }
 
-.mensaje{
-  &.success{
+.mensaje {
+  &.success {
     background-color: var(--success);
     color: white;
   }
 
-  &.error{
+  &.error {
     background-color: var(--error);
     color: white;
   }
 
-  &.warning{
+  &.warning {
     background-color: var(--warning);
     color: white;
   }
 
-  &.info{
+  &.info {
     background-color: var(--info);
     color: white;
   }
 }
-.btn{
+.btn {
   @apply text-center px-6 py-1 rounded text-sm transition-colors cursor-pointer w-max;
 }
-.btn-primary{
-  background-color: var(--primary);
-  color: white;
 
-  &:hover{
-    background-color: #3f4dfe;
-  }
+.btn-foreground {
+  background-color: var(--foreground);
+  color: var(--background);
 
-  &:disabled{
+  &:disabled {
     background-color: #818181;
     cursor: not-allowed;
   }
 
-  &.inverse{
+  &.inverse {
+    background-color: var(--background);
+    color: var(--foreground);
+    border: 1px solid var(--foreground);
+
+    &:hover {
+      background-color: var(--foreground);
+      color: white;
+    }
+  }
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+
+  &:hover {
+    background-color: #3f4dfe;
+  }
+
+  &:disabled {
+    background-color: #818181;
+    cursor: not-allowed;
+  }
+
+  &.inverse {
     background-color: white;
     color: var(--primary);
     border: 1px solid var(--primary);
 
-    &:hover{
+    &:hover {
       background-color: var(--primary);
       color: white;
     }
   }
 }
 
-.btn-secondary{
+.btn-secondary {
   background-color: var(--secondary);
   color: white;
 
-  &:hover{
+  &:hover {
     background-color: #5e5e5e;
   }
 
-  &:disabled{
+  &:disabled {
     background-color: #818181;
     cursor: not-allowed;
   }
 
-  &.inverse{
+  &.inverse {
     background-color: white;
     color: var(--secondary);
     border: 1px solid var(--secondary);
 
-    &:hover{
+    &:hover {
       background-color: var(--secondary);
       color: white;
     }
   }
 }
 
-.btn-tertiary{
+.btn-tertiary {
   background-color: var(--tertiary);
   color: var(--foreground);
 
-  &:hover{
+  &:hover {
     background-color: #e4e4e4;
   }
 
-  &:disabled{
+  &:disabled {
     background-color: #818181;
     cursor: not-allowed;
   }
 
-  &.inverse{
+  &.inverse {
     background-color: white;
     color: var(--tertiary);
     border: 1px solid var(--tertiary);
 
-    &:hover{
+    &:hover {
       background-color: var(--tertiary);
       color: var(--foreground);
     }
   }
 }
 
-.btn-success{
+.btn-success {
   background-color: var(--success);
   color: white;
 
-  &:hover{
+  &:hover {
     background-color: #00a384;
   }
 
-  &:disabled{
+  &:disabled {
     background-color: #818181;
     cursor: not-allowed;
   }
 
-  &.inverse{
+  &.inverse {
     background-color: white;
     color: var(--success);
     border: 1px solid var(--success);
 
-    &:hover{
+    &:hover {
       background-color: var(--success);
       color: white;
     }
   }
 }
 
-.btn-error{
+.btn-error {
   background-color: var(--error);
   color: white;
 
-  &:hover{
+  &:hover {
     background-color: #b33939;
   }
 
-  &:disabled{
+  &:disabled {
     background-color: #818181;
     cursor: not-allowed;
   }
 
-  &.inverse{
+  &.inverse {
     background-color: white;
     color: var(--error);
     border: 1px solid var(--error);
 
-    &:hover{
+    &:hover {
       background-color: var(--error);
       color: white;
     }
   }
 }
 
-.btn-warning{
+.btn-warning {
   background-color: var(--warning);
   color: white;
 
-  &:hover{
+  &:hover {
     background-color: #f5aa32;
   }
 
-  &:disabled{
+  &:disabled {
     background-color: #818181;
     cursor: not-allowed;
   }
 
-  &.inverse{
+  &.inverse {
     background-color: white;
     color: var(--warning);
     border: 1px solid var(--warning);
 
-    &:hover{
+    &:hover {
       background-color: var(--warning);
       color: white;
     }
   }
 }
 
-.btn-info{
+.btn-info {
   background-color: var(--info);
   color: white;
 
-  &:hover{
+  &:hover {
     background-color: #0a74da;
   }
 
-  &:disabled{
+  &:disabled {
     background-color: #818181;
     cursor: not-allowed;
   }
 
-  &.inverse{
+  &.inverse {
     background-color: white;
     color: var(--info);
     border: 1px solid var(--info);
 
-    &:hover{
+    &:hover {
       background-color: var(--info);
       color: white;
     }
+  }
+}
+
+.btn-transparent {
+  background-color: transparent;
+  color: var(--foreground);
+  @apply shadow-md;
+
+  &:hover {
+    @apply shadow-lg;
+  }
+  &:disabled {
+    background-color: #818181;
+    cursor: not-allowed;
+  }
+
+  &.inverse {
+    background-color: white;
+    color: var(--foreground);
+    border: 1px solid var(--tertiary);
+
+    &:hover {
+      background-color: var(--tertiary);
+      color: var(--foreground);
+    }
+  }
+}
+
+
+.radio-option{
+  label{
+    cursor: pointer;
+    @apply transition-colors;
+  }
+  input[type="radio"]:checked + label{
+    background-color: var(--info);
+    color: white;
+  }
+}
+
+.color-picker{
+  label{
+    cursor: pointer;
+    @apply transition-colors;
+  }
+  input[type="radio"]:checked + label{
+    @apply border-black;
+  }
+}
+
+details summary {
+  list-style: none; /* Oculta el marcador */
+}
+
+details summary::-webkit-details-marker {
+  display: none; /* Oculta el marcador en navegadores basados en WebKit (Chrome, Edge, Safari) */
+}
+details {
+  overflow: hidden;
+}
+
+/* Oculta el contenido inicialmente */
+details[open] summary + * {
+  animation: slideDown 0.3s ease-in-out forwards;
+}
+
+
+/* Animación hacia abajo */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 200px; /* Asegúrate de definir un límite máximo */
+  }
+}
+
+details summary:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  float: right;
+  margin-left: 5px;
+}
+
+details[open] summary:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.form-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+@media (width <= 920px){
+  .form-wrapper{
+    grid-template-columns: 1fr;
   }
 }
