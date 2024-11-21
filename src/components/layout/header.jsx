@@ -8,17 +8,9 @@ const links = [
         text: 'Inicio'
     },
     {
-        href: '/calendario',
-        text: 'Calendario'
-    },
-    {
         href: '/equipos',
         text: 'Equipos'
     },
-    {
-        href: '/estadisticas',
-        text: 'Estadísticas'
-    }
 ]
 
 const Header = () => {
