@@ -56,7 +56,7 @@ const Perfil = () => {
         editUsuario(field, data);
     })
     .catch(error => {
-      addNotification('Ocurrio un error al actualizar tu nombre', 'error');
+      addNotification(error.message, 'error');
     })
     .finally(() => {
       hideSender();
@@ -67,12 +67,15 @@ const Perfil = () => {
   const handleChangeFoto = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('file', imageRef.current);
+    if(!imageRef.current.file){
+      addNotification('La imagen es requerida', 'error');
+      return;
+    }
+    formData.append('file', imageRef.current.file);
     if(!usuario) return;
     showSender();
     request(`/usuarios/${usuario.id}/foto`, 'PUT', formData, true)
     .then(response => {
-      console.log(response)
       if(response?.error){
         addNotification(response.error, 'error');
         return
@@ -82,7 +85,6 @@ const Perfil = () => {
         return
       }
       addNotification(response.message, 'success');
-      console.log(response.data.url)
       editUsuario('foto', response.data.url);
     }).catch(error => {
       addNotification(error.message, 'error');
