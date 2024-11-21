@@ -120,7 +120,7 @@ const Forgot = () => {
                     <InputForm type="password" id='password' required name="password" placeholder="Nueva contraseña" />
                     <InputForm type="password" required id='password_confirmation' name="password_confirmation" placeholder="Confirmar contraseña" />
                     <div className='mt-6'>
-                        <ButtonForm>Restablecer contraseña</ButtonForm>
+                        <ButtonForm disabled={isSending}>Restablecer contraseña</ButtonForm>
                     </div>
                 </form>
             </Fases.Fase>
