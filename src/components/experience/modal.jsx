@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useRef } from "react"
 import { Anton } from "next/font/google"
+import { createPortal } from "react-dom"
 
 const anton = Anton({ subsets: ['latin'] , weight: "400" })
 
@@ -95,7 +96,7 @@ const Modal = ({
         }
     }
 
-    return (
+    return createPortal(
         <div ref={modalRef} style={{zIndex: props?.zIndex || 30}} onAnimationEnd={handleAnimationEnd} className={`w-full h-full min-h-dvh fixed left-0 right-0 top-0 bottom-0 modal ${props.position}`}>
             <div className="flex relative w-full h-full">
                 <div onClick={handleExternalClose} className="absolute z-0 left-0 right-0 top-0 bottom-0 external"></div>
@@ -107,7 +108,8 @@ const Modal = ({
                   {children}
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     )
 }
 
