@@ -1,9 +1,10 @@
 'use client'
 import Link from "next/link"
 import { useUsuario } from "../context/usuario-context";
+import splitName from "@/utils/split-name";
 
 const AuthButton = () => {
-  const {isAuthenticated, logout, loading} = useUsuario();
+  const {isAuthenticated, logout, loading, usuario} = useUsuario();
   return (
     <>
       {
@@ -14,9 +15,15 @@ const AuthButton = () => {
               Iniciar sesión
           </Link>
         ): (
-            <button onClick={logout} className="btn btn-tertiary">
-                Cerrar sesión
-            </button>
+            <div className="flex gap-2 items-center">
+              <Link href={'/perfil'} className="btn btn-secondary inverse">
+                {splitName(usuario?.nombre)}
+              </Link>
+              <button onClick={logout} className="btn btn-tertiary">
+                  Cerrar sesión
+              </button>
+            
+            </div>
         )}
         </>
       }
