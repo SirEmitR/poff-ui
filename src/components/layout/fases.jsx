@@ -1,12 +1,12 @@
 'use client'
-import React, { useState, useImperativeHandle, forwardRef } from 'react';
+import React, { useState, useImperativeHandle } from 'react';
 import { CheckIcon, ChevronRightIcon } from '../icons';
 
 const Fase = ({ children }) => {
   return <div>{children}</div>;
 };
 
-const Fases = forwardRef(({ children, bloquearAdelante = false, bloquearAtras = false }, ref) => {
+const Fases = ({ children, bloquearAdelante = false, bloquearAtras = false, ref }) => {
   const [faseActual, setFaseActual] = useState(0);
   const totalFases = React.Children.count(children);
 
@@ -29,7 +29,7 @@ const Fases = forwardRef(({ children, bloquearAdelante = false, bloquearAtras = 
 
   return (
     <div className=''>
-    <div style={{ flex: 1, textAlign: 'center' }}>
+    <div style={{ flex: 1 }}>
         {React.Children.toArray(children)[faseActual]}
       </div>
     <div className='grid grid-cols-8 items-center'>
@@ -63,7 +63,7 @@ const Fases = forwardRef(({ children, bloquearAdelante = false, bloquearAtras = 
     </div>
     </div>
   );
-});
+};
 
 Fases.displayName = 'Fases';
 Fases.Fase = Fase;
