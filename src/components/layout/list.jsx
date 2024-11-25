@@ -3,6 +3,7 @@ import ImageLoad from '../experience/image-load'
 import Link from 'next/link'
 import AntonFont from '../fonts/anton'
 import splitName from '@/utils/split-name'
+import Pagination from '../experience/pagination'
 
 const ImageDisplay = ({image, text}) => {
   if(image) return <ImageLoad src={image} alt={text} />
@@ -44,22 +45,25 @@ const ItemLoading = () => {
   )
 }
 
-const List = ({children,isLoading, hasMore, onLoadMore}) => {
+const List = ({children,isLoading, meta, handlePage}) => {
   return (
-    <div className=' py-4 pb-10 shadow-sm px-4 rounded border border-tertiary'>
-      <ul className='flex flex-col gap-2'>
-        {
-          isLoading ? Array.from({length: 4}).map((_, index) => (
-            <ItemLoading key={index} />
-          )) : <>{children}</>
-        }
-      </ul>
-      <div>
-        {hasMore && (
-          <button  className='w-full py-2 bg-transparent text-sm rounded mt-4'>Ver más</button>
+   <>
+     <div className=' py-4 pb-10 shadow-sm px-4 rounded border border-tertiary'>
+        <ul className='flex flex-col gap-2'>
+          {
+            isLoading ? Array.from({length: 4}).map((_, index) => (
+              <ItemLoading key={index} />
+            )) : <>{children}</>
+          }
+        </ul>
+        
+      </div>
+      <div className='mt-4'>
+        {meta && (
+        <Pagination pages={meta.totalPages} currentPage={meta.currentPage} handlePage={handlePage}/>
         )}
       </div>
-    </div>
+   </>
   )
 }
 
