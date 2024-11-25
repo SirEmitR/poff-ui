@@ -29,7 +29,7 @@ body {
 }
 
 .p-page {
-  @apply px-10 py-6 sm:px-20;
+  @apply px-14 py-6 sm:px-20;
 }
 
 .input-container {
@@ -694,24 +694,23 @@ body {
   }
 }
 
-
-.radio-option{
-  label{
+.radio-option {
+  label {
     cursor: pointer;
     @apply transition-colors;
   }
-  input[type="radio"]:checked + label{
+  input[type="radio"]:checked + label {
     background-color: var(--info);
     color: white;
   }
 }
 
-.color-picker{
-  label{
+.color-picker {
+  label {
     cursor: pointer;
     @apply transition-colors;
   }
-  input[type="radio"]:checked + label{
+  input[type="radio"]:checked + label {
     @apply border-black;
   }
 }
@@ -732,7 +731,6 @@ details[open] summary + * {
   animation: slideDown 0.3s ease-in-out forwards;
 }
 
-
 /* Animación hacia abajo */
 @keyframes slideDown {
   from {
@@ -746,7 +744,7 @@ details[open] summary + * {
 }
 
 details summary:after {
-  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  content: "\02795"; /* Unicode character for "plus" sign (+) */
   font-size: 13px;
   float: right;
   margin-left: 5px;
@@ -756,14 +754,14 @@ details[open] summary:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
-.form-wrapper{
+.form-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
 }
 
-@media (width <= 920px){
-  .form-wrapper{
+@media (width <= 920px) {
+  .form-wrapper {
     grid-template-columns: 1fr;
   }
 }
