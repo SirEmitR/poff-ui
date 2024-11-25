@@ -8,7 +8,7 @@ const Credencial = ({
     foto
 }) => {
   return (
-    <div className="flex flex-col items-center my-4">
+    <div className="flex flex-col max-w-sm items-center my-4">
         <div className="relative max-w-[360px] w-full bg-white h-[200px] rounded-md shadow-md shadow-gray-700 overflow-hidden">
             <img src={PoffImage.src} alt="poff" className="w-[260px] absolute -bottom-6 -left-8 opacity-10" />
             <img src={PoffImage.src} alt="poff" className="w-[60px] z-10 absolute top-6 right-6" />
