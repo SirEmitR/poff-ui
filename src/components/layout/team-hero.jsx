@@ -14,7 +14,7 @@ const TeamHero = ({nombre, tipoFondo, fondo, logo}) => {
           <div className='absolute left-0 right-0 top-0 bottom-0 -z-10'>
             <ImageLoad src={fondo} alt={nombre} />
           </div>
-        <div className='w-32 h-32 skeleton rounded  shadow-lg'>
+        <div className='w-32 h-32 skeleton rounded overflow-hidden  shadow-lg'>
             {
                 logo ? <ImageLoad src={logo} alt={nombre} /> : <h2 className='flex justify-center items-center h-full text-4xl'><AntonFont>{splitName(nombre)}</AntonFont></h2>
             }
