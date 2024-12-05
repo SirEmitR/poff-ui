@@ -1,28 +1,16 @@
-'use client'
-import { useState } from 'react';
+const Tooltip = ({ children, color, className }) => {
 
-const Tooltip = ({ children, message, position = 'top' }) => {
-    const [visible, setVisible] = useState(false);
-
-    const toggleTooltip = () => {
-        setVisible(!visible);
-    };
-
-    const closeTooltip = () => {
-        setVisible(false);
-    };
 
     return (
-        <div className="tooltip-wrapper">
-            <button onClick={toggleTooltip} className="tooltip-trigger">
+        <div 
+            style={{backgroundColor: `var(--${color})`}}
+            className={`
+            px-3 py-1 text-sm text-white rounded-full flex justify-center items-center gap-2 w-max
+            ${className}
+            `}>
+            <div>
                 {children}
-            </button>
-            {visible && (
-                <div className={`tooltip-bubble text-xs tooltip-${position}`}>
-                    <span>{message}</span>
-                    <button onClick={closeTooltip} className="tooltip-close">×</button>
-                </div>
-            )}
+            </div>
         </div>
     );
 };
