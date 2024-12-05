@@ -16,8 +16,7 @@ const EquipoButtons = () => {
                   {isAuthenticated && (
                     <div className="flex gap-2 mt-4">
                         <Link href='/equipos/crear' className="btn btn-info">Crear equipo</Link>
-                        <button className="btn btn-tertiary">Unirse</button>
-                        <button className="btn btn-transparent">Mis equipos</button>
+                        <button className="btn btn-tertiary">Mis equipos</button>
                     </div>
                 )}
                 </>
