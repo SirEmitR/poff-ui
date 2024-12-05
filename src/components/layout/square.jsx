@@ -4,6 +4,7 @@ const Square = ({
     children,
     cols = 1,
     rows = 1,
+    isLoading = false,
 }) => {
   return (
     <div 
@@ -13,7 +14,7 @@ const Square = ({
             gridColumn: `span ${cols}`,
         }}
     >
-        {children}
+        {isLoading ? (<div className='p-20 skeleton'></div>) : children}
     </div>
   )
 }
