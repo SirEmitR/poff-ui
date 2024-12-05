@@ -10,23 +10,31 @@ const ImageDisplay = ({image, text}) => {
   return <h2 className='flex justify-center items-center h-full text-lg'><AntonFont>{splitName(text)}</AntonFont></h2>
 }
 
-const ListItem = ({image, name, href }) => {
+const ListItem = ({values, href, hasImage }) => {
   return (
     <li className='flex w-full'>
       {
         href  ? (
-          <Link href={href} className='flex-1 flex bg-gray-50 rounded items-center gap-4'>
-            <div className='w-10 h-10 rounded overflow-hidden'>
-              <ImageDisplay image={image} text={name} />
-            </div>
-            <h3 className=''>{name}</h3>
+          <Link href={href} className='flex-1 flex justify-between text-left px-2 bg-gray-50 rounded items-center gap-4'>
+            {hasImage && <div className='w-10 h-10 rounded overflow-hidden'>
+              <ImageDisplay image={values[0]} text={values[1]} />
+            </div>}
+            {
+              values.slice(hasImage ? 1 : 0).map((value, index) => (
+                <div key={index} className=''>{value}</div>
+              ))
+            }
           </Link>
         ) : (
-          <div className='flex-1 flex items-center gap-4'>
-            <div className='w-10 h-10 rounded overflow-hidden'>
-              <ImageDisplay image={image} text={name} />
-            </div>
-            <h3 className=''>{name}</h3>
+          <div className='flex-1 flex justify-between text-left px-2 items-center gap-4'>
+            {hasImage && <div className='w-10 h-10 rounded overflow-hidden'>
+              <ImageDisplay image={values[0]} text={values[1]} />
+            </div>}
+            {
+              values.slice(hasImage ? 1 : 0).map((value, index) => (
+                <p key={index} className=''>{value}</p>
+              ))
+            }
           </div>
         )
       }
@@ -34,25 +42,27 @@ const ListItem = ({image, name, href }) => {
   )
 }
 
-const ItemLoading = () => {
+const ItemLoading = ({hasImage}) => {
   return (
     <li className='flex w-full'>
       <div className='flex-1 flex bg-gray-50 rounded items-center gap-4'>
-        <div className='w-10 h-10 rounded overflow-hidden skeleton'></div>
-        <h3 className='bg-gray-300 skeleton py-3 px-20'></h3>
+        {
+          hasImage && <div className='w-10 h-10 rounded overflow-hidden skeleton'></div>
+        }
+        <p className='bg-gray-300 skeleton py-3 px-20'></p>
       </div>
     </li>
   )
 }
 
-const List = ({children,isLoading, meta, handlePage}) => {
+const List = ({children,isLoading, meta, handlePage,hasImage}) => {
   return (
    <>
      <div className=' py-4 pb-10 shadow-sm px-4 rounded border border-tertiary'>
         <ul className='flex flex-col gap-2'>
           {
             isLoading ? Array.from({length: 4}).map((_, index) => (
-              <ItemLoading key={index} />
+              <ItemLoading key={index} hasImage={hasImage} />
             )) : <>{children}</>
           }
         </ul>
