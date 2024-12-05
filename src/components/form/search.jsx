@@ -1,12 +1,10 @@
-import request from '@/utils/request';
 import React, { useEffect, useState } from 'react'
 
-const SearchInput = ({endpoint,length, fetchData}) => {
+const SearchInput = ({length, fetchData}) => {
     const [query, setQuery] = useState(""); // Lo que el usuario escribe
     const [debouncedQuery, setDebouncedQuery] = useState(""); // El query que se envía al servidor
     // Actualiza los resultados filtrados cuando el query cambia
     useEffect(() => {
-        console.log('query');
         const handler = setTimeout(() => {
             setDebouncedQuery(query);
         }, 300); // Tiempo de espera (300 ms)
@@ -17,11 +15,12 @@ const SearchInput = ({endpoint,length, fetchData}) => {
     }, [query]);
 
     useEffect(() => {
-        console.log('debouncedQuery');
         if (debouncedQuery.length >= length) {
-            fetchData(debouncedQuery);
+            fetchData({
+                search: debouncedQuery
+            });
         }else{
-            fetchData('');
+            fetchData({search: ''});
         }
     }, [length, debouncedQuery, fetchData]);
   
