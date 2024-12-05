@@ -11,6 +11,10 @@ const links = [
         href: '/equipos',
         text: 'Equipos'
     },
+    {
+        href: '/eventos',
+        text: 'Eventos'
+    }
 ]
 
 const Header = () => {
