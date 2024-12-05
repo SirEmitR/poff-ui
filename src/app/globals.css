@@ -347,67 +347,6 @@ body {
   }
 }
 
-.tooltip-wrapper {
-  display: inline-block;
-  position: relative;
-}
-
-.tooltip-trigger {
-  background: none;
-  border: none;
-  font-size: 1.2em;
-  cursor: pointer;
-}
-
-.tooltip-bubble {
-  position: absolute;
-  padding: 8px;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  border-radius: 4px;
-  white-space: nowrap;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-}
-
-.tooltip-close {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1em;
-  margin-left: 8px;
-  cursor: pointer;
-}
-
-.tooltip-top {
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 8px;
-}
-
-.tooltip-right {
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%);
-  margin-left: 8px;
-}
-
-.tooltip-bottom {
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 8px;
-}
-
-.tooltip-left {
-  top: 50%;
-  right: 100%;
-  transform: translateY(-50%);
-  margin-right: 8px;
-}
-
 /* HTML: <div class="loader"></div> */
 /* HTML: <div class="loader"></div> */
 .loader {
@@ -757,7 +696,6 @@ details[open] summary:after {
 .form-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
 }
 
 @media (width <= 920px) {
