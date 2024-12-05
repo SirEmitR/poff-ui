@@ -6,8 +6,11 @@ import { usePathname } from 'next/navigation'
 function isHighlight(pathname, href) {
   if (pathname === '/') {
     return href === '/'
+  }else{
+    if(href !== '/'){
+      return pathname.includes(href)
+    }
   }
-  return pathname.includes(href)
 }
 
 const Menu = ({

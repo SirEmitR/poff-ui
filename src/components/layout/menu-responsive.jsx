@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Modal from "../experience/modal"
 import { BarsIcon } from "../icons"
 import NavLinks from "./nav-links"
@@ -8,9 +8,12 @@ import NavLinks from "./nav-links"
 function isHighlight(pathname, href) {
     if (pathname === '/') {
       return href === '/'
+    }else{
+      if(href !== '/'){
+        return pathname.includes(href)
+      }
     }
-    return pathname.includes(href)
-}
+  }
   
 const MenuResponsive = ({
     links,
@@ -21,6 +24,9 @@ const MenuResponsive = ({
     const toggleOpen = () => {
         setOpen(!open)
     }
+    useEffect(() => {
+      setOpen(false)
+    }, [pathname])
     
   return (
     <div className="block sm:hidden">
